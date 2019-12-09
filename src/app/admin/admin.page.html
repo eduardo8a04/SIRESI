@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Reportes ciudadanos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button size="small" color="secondary" (click)="cerrarSesion()">Cerrar sesión</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label>Estatus</ion-label>
+    <ion-select placeholder="Seleccione un estatus" [(ngModel)]="filtro" (ionChange) = "aplicarFiltro()">
+      <ion-select-option value="todos">Todos</ion-select-option>
+      <ion-select-option value="Pendiente">Pendientes</ion-select-option>
+      <ion-select-option value="Aceptado">Aceptados</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+ 
+
+  <ion-item-sliding button *ngFor="let denuncia of (denuncias | async)">
+      <ion-item-options side="end">
+        <ion-item-option color="danger" expandable (click)="deleteDenuncia(denuncia.id)">
+          Eliminar
+        </ion-item-option>
+      </ion-item-options>
+  
+      <ion-item [routerLink]="['/denuncia-detalle', denuncia.id]">
+        <ion-label>{{ denuncia.titulo }}</ion-label>
+      </ion-item>
+    </ion-item-sliding>
+
+</ion-content>

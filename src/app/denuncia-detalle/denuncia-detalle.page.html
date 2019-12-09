@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalles</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-padding">
+    <ion-item>
+      <ion-label position="floating">Titulo</ion-label>
+      <ion-input type="text" [(ngModel)]="denuncia.titulo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-textarea rows="5" [(ngModel)]="denuncia.descripcion"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Imagen</ion-label>
+      <ion-thumbnail slot="end">
+        <img src="{{denuncia.urlArchivo}}" alt="">
+      </ion-thumbnail>
+    </ion-item>
+    <ion-item>
+      <ion-label>Tipo</ion-label>
+      <ion-select placeholder="Seleccione un tipo" [(ngModel)]="denuncia.tipo">
+        <ion-select-option value="Alumbrado">Alumbrado</ion-select-option>
+        <ion-select-option value="Publico">Público</ion-select-option>
+        <ion-select-option value="Calles">Calles</ion-select-option>
+        <ion-select-option value="Avenidas">Avenidas</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Estatus</ion-label>
+      <ion-select placeholder="Seleccione un tipo" [(ngModel)]="denuncia.estatus">
+        <ion-select-option value="Pendiente">Pendiente</ion-select-option>
+        <ion-select-option value="Aceptado">Aceptado</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Comentarios</ion-label>
+      <ion-textarea rows="5" [(ngModel)]="denuncia.comentarios"></ion-textarea>
+    </ion-item>
+
+    <div class="map-wrapper">
+        <div #map id="map"></div>
+      </div>
+
+    <div class="ion-padding">
+      <ion-button [disabled]="cargando" size="large" expand="block" (click)="updateDenuncia()">Actualizar</ion-button>
+    </div>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="denuncias"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Información</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <img src="{{denuncia.urlArchivo}}" class="archivo" />
+    <ion-card-content>
+      <p><b>Titulo: </b> {{denuncia.titulo}} </p>
+      <p><b>Tipo: </b> {{denuncia.tipo}} </p>
+      <p>
+        <b>Descripción: </b>{{denuncia.descripcion}}
+      </p>
+      <p>
+        <b>Comentarios: </b>{{denuncia.comentarios}}
+      </p>
+      <p>Ubicación</p>
+      <div class="map-wrapper">
+          <div #map id="map"></div>
+        </div>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

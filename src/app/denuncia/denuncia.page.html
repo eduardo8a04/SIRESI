@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Denuncia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+        <div class="ion-text-center">
+          <h4>Reporte Ciudadano</h4>
+        </div>
+        <div class="ion-padding">
+          <ion-item>
+            <ion-label position="floating">Titulo</ion-label>
+            <ion-input type="text" [(ngModel)]="denuncia.titulo"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Descripción</ion-label>
+            <ion-textarea rows="5" [(ngModel)]="denuncia.descripcion"></ion-textarea>
+          </ion-item>
+          <ion-item>
+            <ion-button fill="clear" expand="full" color="primary" (click)="selectImage()">
+              <ion-icon slot="start" name="camera"></ion-icon>
+              Seleccionar imagen
+            </ion-button>
+          </ion-item>
+
+          <ion-button color="primary" (click)="loadMap()">
+            <ion-icon slot="icon-only" name="locate"></ion-icon>
+          </ion-button>
+
+          <div class="map-wrapper">
+            <div id="map_center">
+              <img src="../../assets/marker.png" />
+            </div>
+            <div #map id="map"></div>
+          </div>
+
+          <ion-item>
+            <ion-button color="primary" (click)="setLocation()">
+              Asignar coordenadas
+            </ion-button>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Tipo</ion-label>
+            <ion-select placeholder="Seleccione un tipo" [(ngModel)]="denuncia.tipo">
+              <ion-select-option value="Alumbrado">Alumbrado público</ion-select-option>
+              <ion-select-option value="Calles">Calles</ion-select-option>
+              <ion-select-option value="Avenidas">Avenidas</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+        </div>
+
+        <div *ngIf="cargando">
+          Subiendo reporte...
+        </div>
+
+        <div class="ion-padding">
+          <ion-button [disabled]="cargando" size="large" expand="block" (click)="guardarDenuncia()">Guardar denuncia
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
